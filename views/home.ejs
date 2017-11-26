@@ -2,11 +2,16 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css" />
+    <style type="text/css">
+      a{margin-left: 20px; text-decoration: none;}
+      a:hover{text-decoration: underline;}
+    </style>
   </head>
   <body>
-    <h1>Your name: <%- user.name %></h1>
-    <p>Welcome you home</p>
-    <p><a href="/logout">我要注销</a></p>
+    <h1>当前登录用户: <%- user.username %></h1>
+    <a href="/create"> 发表文章 </a>
+    <a href="/logout"> 退出 </a>
   </body>
 </html>

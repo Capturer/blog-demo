@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css" />
+    <style type="text/css">
+      a{margin-left: 20px; text-decoration: none;}
+      a:hover{text-decoration: underline;}
+    </style>
+  </head>
+  <body>
+    <a href="/home">主页</a>
+    <h1>发表博客</h1>
+    <form method="post">
+      标题：<br/>
+      <input type="text" name="title" id="title"/><br />
+      正文：<br />
+      <textarea name="content" rows="20" cols="100" id="content"></textarea><br />
+      <button type="submit" class="btn btn-primary btn-block" id="post0">发表</button>
+    </form>
+
+    <script type="text/javascript" src="javascripts/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="javascripts/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        $("#post0").click(function() {
+          var title = $("#title").val();
+          var content = $("$content").val();
+          var data = {"title": title, "content": content};
+          $.ajax({
+            url: "/create",
+            type: "post",
+            data: data,
+            success: function(data, status) {
+            	if(status == 'success'){ 
+                    location.href = 'home';
+              }
+            },
+            error: function(data,err){ 
+                //location.href = 'register';
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
